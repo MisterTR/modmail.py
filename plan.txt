@@ -1,8 +1,0 @@
-- on dm
-    - takes the dm and puts it into var
-    - sends embed saying that the message has been sent to mods
-    - displays the message in a specified text channel
-
-- reply in channel
-    - mm 0000 your reply will go here
-    - sends the response back to the person()

@@ -1,6 +1,7 @@
 # bot token and prefix
 BOTPREFIX = "$"
 BOTTOKEN = ""
+MODMAILCHANNEL = 
 
 # imports
 import discord
@@ -41,7 +42,7 @@ async def on_message(ctx):
 
 
         # sending an embed to the modmail channel so the mods can view it
-        channel = client.get_channel(753679931288060116)
+        channel = client.get_channel(MODMAILCHANNEL)
         ChannelEmbed = discord.Embed(
             colour = discord.Colour.light_gray()
         )
