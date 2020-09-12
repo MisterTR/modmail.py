@@ -1,5 +1,5 @@
 <h1>
-    <img align="left" src="https://img.icons8.com/fluent/144/000000/discord-new-logo.png"></img>modmail.py
+    <img align="left" src="https://img.icons8.com/fluent/64/000000/discord-new-logo.png"></img>modmail.py
 </h1>
 <p>
     Modmail discord bot written in python, designed for small servers, which inludes the following features
