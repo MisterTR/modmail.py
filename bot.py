@@ -1,7 +1,9 @@
 # bot token and prefix
-BOTPREFIX = "/"
-BOTTOKEN = ""
-MODMAILCHANNEL = 
+ConfigFile = open("./config.txt", "r")
+BOTTOKEN = ConfigFile,readline()
+BOTPREFIX = ConfigFile.readline()
+MODMAILCHANNEL = int(ConfigFile.readline())
+ConfigFile.close()
 
 # imports
 import discord

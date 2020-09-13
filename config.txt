@@ -1,0 +1,5 @@
+BotToken
+BotPrefix
+ModMailChannel
+
+To configure this file, please run setup.py in the current folder
