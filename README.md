@@ -12,4 +12,4 @@
 **Future additions**
 * include checks so that only the mods of a server can reply to the messages
 
-Please have a look at [setup.md](./setup.md) for setup instructions
+**Please have a look at [setup.md](./setup.md) for setup instructions**
