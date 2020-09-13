@@ -1,6 +1,5 @@
-<h1>
-    <img align="left" src="https://img.icons8.com/fluent/56/000000/discord-new-logo.png"></img>modmail.py setup instructions
-</h1>
+# ![discordlogo](https://img.icons8.com/fluent/56/000000/discord-new-logo.png)modmail.py setup instructions 
+
 (This tutorials assumes that you have python3 installed, if you do not, it is easy to find instructions on google)
 1. Find the discord bot token for the modmail bot, you will need this later. If you are not sure how to do this, please refer to [this guide](https://discordpy.readthedocs.io/en/latest/discord.html)
 2. Install discord.py using `pip3 install discord.py`
