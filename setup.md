@@ -5,5 +5,6 @@
 2. Install discord.py using `pip3 install discord.py`
 3. Run setup.py from this folder using `py -3 setup.py` on windows or `python3 setup.py` on mac or linux
 4. Follow the prompts in the setup.py script
-5. Run the bot.py script using `py -3 bot.py` on windows or `python3 bot.py` on mac or linux
-6. Any issues, please report them, or use the error messages to find a solution
+5. Change the bot prefix in bot.py (enter inbetween the speech marks on line 1)
+6. Run the bot.py script using `py -3 bot.py` on windows or `python3 bot.py` on mac or linux
+7. Any issues, please report them, or use the error messages to find a solution

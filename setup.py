@@ -3,15 +3,14 @@ print("""###########################
 ###########################
 """)
 BotToken = input("\nPlease input the bot token; ").strip()
-BotPrefix = input("Please input the bot prefix; ").strip()
 MessageChannel = input("Please input the modmail text channel (channel that mods recieve messages in); ").strip()
-print("\nPlease confirm these details are correct;\nBot token; " + BotToken + "\nBot prefix; " + BotPrefix + "\nMod message channel; " + MessageChannel)
+print("\nPlease confirm these details are correct;\nBot token; " + BotToken + "\nMod message channel; " + MessageChannel)
 yn = input("\nAre these details correct (y/n); ")
 
 if yn == "y":
     print("\nWriting config file now...")
     ConfigFile = open("./config.txt", "w")
-    ConfigFile.writelines(BotToken + "\n" + BotPrefix + "\n" + MessageChannel)
+    ConfigFile.writelines(BotToken + "\n" + MessageChannel)
     ConfigFile.close()
     input("Config file written, please press enter to exit...")
 elif yn == "n":

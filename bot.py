@@ -1,7 +1,8 @@
-# bot token and prefix
+BOTPREFIX = ""
+
+# bot token and channel
 ConfigFile = open("./config.txt", "r")
-BOTTOKEN = ConfigFile,readline()
-BOTPREFIX = ConfigFile.readline()
+BOTTOKEN = ConfigFile.readline()
 MODMAILCHANNEL = int(ConfigFile.readline())
 ConfigFile.close()
 
