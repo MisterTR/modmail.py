@@ -1,4 +1,5 @@
-BOTPREFIX = ""
+BOTPREFIX = "/"
+
 
 # bot token and channel
 ConfigFile = open("./config.txt", "r")
@@ -19,7 +20,7 @@ client.remove_command("help")
 # changing the bot's status to "Listening to $help" and printing that the bot has logged in without any issues
 @client.event
 async def on_ready():
-    ListeningTo = discord.Activity(type=discord.ActivityType.listening, name="to your concerns")
+    ListeningTo = discord.Activity(type=discord.ActivityType.listening, name="your concerns")
     await client.change_presence(status=discord.Status.online, activity=ListeningTo)
     print('We have logged in as {0.user}'.format(client))
 
@@ -49,7 +50,7 @@ async def on_message(ctx):
         ChannelEmbed.set_footer(text = "Thread number: " + str(ThreadNumber), icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
         await channel.send(embed = ChannelEmbed)
 
-        # sending an embed to the user 
+        # sending an embed to the user
         UserEmbed = discord.Embed(
             colour = discord.Colour.light_gray()
         )
@@ -57,7 +58,7 @@ async def on_message(ctx):
         UserEmbed.add_field(name = "Your message has been sent", value = "Your message has been sent to a moderator and is now waiting for a reply, please be patient. The reply will be sent in this thread.")
         await ctx.channel.send(embed = UserEmbed)
 
-        
+
         ThreadText = open("./Tickets/thread" + str(ThreadNumber) + ".txt", "w")
         ThreadText.writelines(str(ctx.author.id))
         ThreadText.close()
@@ -74,35 +75,48 @@ async def ping(ctx):
 
 @client.command(name = "thread")
 async def thread(ctx):
-    MessageContent = ctx.message.content
-    MessageSplit = MessageContent.split(" ")
-    ThreadNumber = MessageSplit[1]
-    ThreadNumberLen = len(ThreadNumber)
-    MessageIndex = ThreadNumberLen + 8
-    ModReply = MessageContent[MessageIndex:]
+    ModMailChannel = client.get_channel(MODMAILCHANNEL)
 
-    ThreadText = open("./Tickets/thread" + ThreadNumber + ".txt")
-    Thread = ThreadText.readline()
-    ThreadText.close()
-    user = client.get_user(int(Thread))
+    # checking that the reply is actually in the modmail channel
+    if ctx.channel == ModMailChannel:
+        MessageContent = ctx.message.content
+        MessageSplit = MessageContent.split(" ")
+        ThreadNumber = MessageSplit[1]
+        ThreadNumberLen = len(ThreadNumber)
+        MessageIndex = ThreadNumberLen + 8
+        ModReply = MessageContent[MessageIndex:]
 
-    ReplyEmbed = discord.Embed(
-        colour = discord.Colour.light_gray()
-    )
-    ReplyEmbed.set_author(name = "ModMail", icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
-    ReplyEmbed.add_field(name = "Response from:", value = ctx.author, inline = False)
-    ReplyEmbed.add_field(name = "Response content:", value = ModReply, inline = False)
+        ThreadText = open("./Tickets/thread" + ThreadNumber + ".txt")
+        Thread = ThreadText.readline()
+        ThreadText.close()
+        user = client.get_user(int(Thread))
 
-    ConfirmEmbed = discord.Embed(
-        colour = discord.Colour.light_gray()
-    )
-    ConfirmEmbed.set_author(name = "ModMail - Sent message", icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
-    ConfirmEmbed.add_field(name = "Sent to:", value = user, inline = False)
-    ConfirmEmbed.add_field(name = "Response content:", value = ModReply, inline = False)
-    ConfirmEmbed.set_footer(text = "Thread number: " + str(ThreadNumber), icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
+        ReplyEmbed = discord.Embed(
+            colour = discord.Colour.light_gray()
+        )
+        ReplyEmbed.set_author(name = "ModMail", icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
+        ReplyEmbed.add_field(name = "Response from:", value = ctx.author, inline = False)
+        ReplyEmbed.add_field(name = "Response content:", value = ModReply, inline = False)
 
-    await user.send(embed = ReplyEmbed)
-    await ctx.send(embed = ConfirmEmbed)
+        ConfirmEmbed = discord.Embed(
+            colour = discord.Colour.light_gray()
+        )
+        ConfirmEmbed.set_author(name = "ModMail - Sent message", icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
+        ConfirmEmbed.add_field(name = "Sent to:", value = user, inline = False)
+        ConfirmEmbed.add_field(name = "Response content:", value = ModReply, inline = False)
+        ConfirmEmbed.set_footer(text = "Thread number: " + str(ThreadNumber), icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
+
+        await user.send(embed = ReplyEmbed)
+        await ctx.send(embed = ConfirmEmbed)
+    else:
+        # sending an embed to say that the wrong channel has been used
+        DeclinedEmbed = discord.Embed(
+            colour = discord.Colour.light_gray()
+        )
+        DeclinedEmbed.set_author(name = "Modmail Error", icon_url = "https://img.icons8.com/dusk/64/000000/mailbox-closed-flag-down.png")
+        DeclinedEmbed.add_field(name = "Incorrect channel", value = "Please make sure you use #modmail to reply to any modmail messages. If you do not have access to this chat, you are not a moderator. If you think there is an error please contact @matt")
+        await ctx.send(embed = DeclinedEmbed)
+
 
 @client.command(name = "help")
 async def help(ctx):
