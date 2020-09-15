@@ -13,3 +13,5 @@
 * include checks so that only the mods of a server can reply to the messages
 
 **Please have a look at [setup.md](./setup.md) for setup instructions**
+
+**Any bot tokens will have been regenerated since, please do not waste your time trying to access my bot account**
