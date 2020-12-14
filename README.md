@@ -7,10 +7,7 @@
 
 **How to use**
 * to send message to mods; just dm the bot account, when the message has been successfully sent, you will be notified
-* to reply as a mod; use /thread ThreadNumber ReplyContent to reply to the respective threads 
-
-**Future additions**
-* include checks so that only the mods of a server can reply to the messages
+* to reply as a mod; use /thread ThreadNumber ReplyContent to reply to the respective threads
 
 **Please have a look at [setup.md](./setup.md) for setup instructions**
 
