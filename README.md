@@ -1,4 +1,4 @@
-# ![discordlogo](https://img.icons8.com/fluent/56/000000/discord-new-logo.png)modmail.py
+![discordlogo](https://img.icons8.com/fluent/56/000000/discord-new-logo.png) # modmail.py
 
 **Modmail discord bot written in python, designed for any server size, which inludes the following features;**
 * Support for unlimited threads, meaning that there can be multiple people contact the mods at the same time
